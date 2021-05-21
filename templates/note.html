@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    {{ note.title }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 text-center ml-auto mr-auto">
+                    <h2>{{ note.title }}</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group has-default bmd-form-group">
+                        <label for="content" class="bmd-label-floating">Content</label>
+                        <textarea class="form-control" id="content" cols="30" rows="20">{{ note.content }}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 mr-auto ml-auto mb-5">
+                    <button class="btn btn-primary btn-block" id="copy">Copy Text</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+
+    <script>
+        $('#copy').click(function () {
+            $('#content').select()
+            document.execCommand("copy");
+            $('#copy').html('Text Copied')
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Note Created | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 text-center ml-auto mr-auto">
+                    <h2>Note Created</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group has-default bmd-form-group">
+                        <label for="link" class="bmd-label-floating">Note Link</label>
+                        <input id="link" class="form-control" type="text" value="{{ request.scheme}}://{{ request.get_host }}{{ link }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mr-auto ml-auto mb-5">
+                    <button class="btn btn-primary btn-block" id="copy">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+
+    <script>
+        $('#copy').click(function () {
+            $('#link').select()
+            document.execCommand("copy");
+            $('#copy').html('Link Copied')
+        })
+    </script>
+{% endblock %}

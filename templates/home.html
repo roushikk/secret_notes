@@ -1,0 +1,163 @@
+{% extends '_base.html' %}
+{% load static widget_tweaks %}
+
+{% block title %}
+    Home | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 text-center ml-auto mr-auto">
+                    <h2>Create Note</h2>
+                </div>
+            </div>
+
+            {% if form.errors %}
+
+                {% for field in form %}
+                    {% for message in field.errors %}
+                        <div class="alert alert-danger">
+                            <div class="container">
+                                <div class="alert-icon">
+                                    <i class="material-icons">error_outline</i>
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                </button>
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {% for message in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <div class="container">
+                            <div class="alert-icon">
+                                <i class="material-icons">error_outline</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">Title</label>
+                            {% render_field form.title class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">Content</label>
+                            {% render_field form.content class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h4>Optional Settings</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">Password</label>
+                            {% render_field form.password class="form-control" %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">Confirm Password</label>
+                            {% render_field form.password2 class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">Allowed Reads</label>
+                            {% render_field form.allowed_reads class="form-control" min='1' %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div id="expires_at_group" class="form-group has-default bmd-form-group is-filled">
+                            <label class="bmd-label-floating">Expires At</label>
+                            {% render_field form.expires_at class="form-control datetimepicker" %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group has-default bmd-form-group">
+                            <label class="bmd-label-floating">E-mail to notify</label>
+                            {% render_field form.notify_email class="form-control" %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check form-group has-default bmd-form-group">
+                            <label class="form-check-label">
+                                {% render_field form.display_confirmation class="form-check-input" %}
+                                Display Confirmation
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" value="Create Note" class="btn btn-primary btn-block mb-4">
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+
+    <script type="text/javascript" src="{% static 'js/plugins/bootstrap-datetimepicker.js' %}"></script>
+    <script>
+        $('.datetimepicker').datetimepicker({
+            format: 'DD-MM-YYYY HH:mm:ss',
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
+    </script>
+{% endblock %}
