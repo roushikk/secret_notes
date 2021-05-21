@@ -69,6 +69,11 @@ class NoteView(generic.DetailView):
         return self.render_to_response(context)
 
 
+class AboutView(generic.TemplateView):
+    template_name = 'about.html'
+
+
 home = HomeView.as_view()
 created = CreatedView.as_view()
 note = NoteView.as_view()
+about = AboutView.as_view()

@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    About | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 ml-auto mr-auto">
+                    <h2>About</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10 mb-5 ml-auto mr-auto">
+                    <h5>This project is a clone of <a href="https://privnote.com/" target="_blank">privnote</a>.</h5>
+                    <h5>I did not like how a few things work with privnote so I decided to make my own version of
+                        it</h5>
+                    <h5>Here's how this website is different than privnote:</h5>
+                    <ul>
+                        <li>You can set the title of the note</li>
+                        <li>You can set how many reads are allowed</li>
+                        <li>You can set any time of expiry</li>
+                        <li>You can set the amount of reads as well as expiry time on the same note</li>
+                        <li>Note is not destroyed if the person enters a wrong password</li>
+                    </ul>
+
+                    <h5>I hope you like this small project.</h5>
+                    <h5>This project is made in Django and is open-source</h5>
+                    <h5><a href="https://github.com/roushikk/secret_notes" target="_blank">Star it on GitHub</a></h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+
+    <script>
+        $('#copy').click(function () {
+            $('#link').select()
+            document.execCommand("copy");
+            $('#copy').html('Link Copied')
+        })
+    </script>
+{% endblock %}
