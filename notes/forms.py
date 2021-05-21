@@ -15,7 +15,6 @@ class NoteCreateForm(forms.ModelForm):
             'content',
             'password',
             'allowed_reads',
-            'notify_email',
             'display_confirmation',
             'expires_at'
         ]

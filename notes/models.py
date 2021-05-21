@@ -14,7 +14,6 @@ class Note(models.Model):
     password = models.CharField(max_length=80, blank=True, null=True)
     allowed_reads = models.IntegerField(default=1)
     times_read = models.IntegerField(default=0)
-    notify_email = models.EmailField(blank=True, null=True)
     display_confirmation = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

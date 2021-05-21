@@ -9,7 +9,6 @@ class NoteAdmin(admin.ModelAdmin):
         'slug',
         'allowed_reads',
         'times_read',
-        'notify_email',
         'display_confirmation',
         'created_at',
         'modified_at',
