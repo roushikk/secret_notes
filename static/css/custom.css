@@ -1,0 +1,8 @@
+.page-header.header-small {
+    height: 35vh;
+    min-height: 35vh;
+}
+
+.header-primary {
+    background-color: #e1bee7;
+}
