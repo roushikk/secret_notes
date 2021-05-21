@@ -1,10 +1,11 @@
+from django.http import Http404
 from django.shortcuts import reverse, get_object_or_404
+from django.utils.timezone import now
 from django.views import generic
 
 from .forms import NoteCreateForm
 from .models import Note
-from django.http import Http404
-from django.utils.timezone import now
+
 
 class HomeView(generic.CreateView):
     template_name = 'home.html'
@@ -62,6 +63,7 @@ class NoteView(generic.DetailView):
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+
 
 home = HomeView.as_view()
 created = CreatedView.as_view()

@@ -1,10 +1,13 @@
 from django import forms
 from django.utils.timezone import now
+
 from .models import Note
+
 
 class NoteCreateForm(forms.ModelForm):
     password2 = forms.CharField(widget=forms.PasswordInput(), required=False)
     expires_at = forms.DateTimeField(input_formats=['%d-%m-%Y %H:%M:%S'], required=False)
+
     class Meta:
         model = Note
         fields = [

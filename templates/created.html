@@ -18,7 +18,8 @@
                 <div class="col">
                     <div class="form-group has-default bmd-form-group">
                         <label for="link" class="bmd-label-floating">Note Link</label>
-                        <input id="link" class="form-control" type="text" value="{{ request.scheme}}://{{ request.get_host }}{{ link }}">
+                        <input id="link" class="form-control" type="text"
+                               value="{{ request.scheme }}://{{ request.get_host }}{{ link }}">
                     </div>
                 </div>
             </div>
