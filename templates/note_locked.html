@@ -32,6 +32,16 @@
 
             <form method="POST">
                 {% csrf_token %}
+
+                {% if note.display_confirmation %}
+                    <div class="row">
+                        <div class="col text-center">
+                            <h5>Opening this note will destroy it</h5>
+                            <h5>Do you want to continue?</h5>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="row">
                     <div class="col-6 ml-auto mr-auto">
                         <div class="form-group has-default bmd-form-group">

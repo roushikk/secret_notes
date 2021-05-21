@@ -46,6 +46,8 @@ class NoteView(generic.DetailView):
 
         if obj.password:
             self.template_name = 'note_locked.html'
+        elif obj.display_confirmation:
+            self.template_name = 'confirm.html'
         else:
             obj.times_read += 1
             obj.save()
@@ -56,7 +58,7 @@ class NoteView(generic.DetailView):
         password = request.POST.get('password')
         self.object = self.get_object()
 
-        if password == self.object.password:
+        if self.object.password == password or not self.object.password:
             self.object.times_read += 1
             self.object.save()
         else:

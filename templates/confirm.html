@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    {{ note.title }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 text-center ml-auto mr-auto">
+                    <h2>{{ note.title }}</h2>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col text-center">
+                        <h5>Opening this note will destroy it</h5>
+                        <h5>Do you want to continue?</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 mr-auto ml-auto mb-5">
+                        <input class="btn btn-primary btn-block" type="submit" value="Continue">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}
