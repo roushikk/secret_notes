@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    env_file:
+      - .env.prod
+    command: gunicorn -c gunicorn.conf.py secret_notes.wsgi
+
+  db:
+    env_file:
+      - .env.prod
