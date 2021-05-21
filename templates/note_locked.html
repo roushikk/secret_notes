@@ -13,6 +13,23 @@
                     <h2>{{ note.title }}</h2>
                 </div>
             </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        <div class="container">
+                            <div class="alert-icon">
+                                <i class="material-icons">error_outline</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             <form method="POST">
                 {% csrf_token %}
                 <div class="row">

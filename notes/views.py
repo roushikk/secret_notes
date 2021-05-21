@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import reverse, get_object_or_404
 from django.utils.timezone import now
@@ -60,6 +61,7 @@ class NoteView(generic.DetailView):
             self.object.save()
         else:
             self.template_name = 'note_locked.html'
+            messages.add_message(request, messages.ERROR, 'Invalid Password')
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
