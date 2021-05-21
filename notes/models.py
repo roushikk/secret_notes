@@ -11,7 +11,7 @@ class Note(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     password = models.CharField(max_length=80, blank=True, null=True)
-    allowed_reads = models.IntegerField(default=0)
+    allowed_reads = models.IntegerField(default=1)
     times_read = models.IntegerField(default=0)
     notify_email = models.EmailField(blank=True, null=True)
     display_confirmation = models.BooleanField()
