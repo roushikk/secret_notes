@@ -11,6 +11,10 @@ This project is a clone of  [privnote](https://privnote.com/).
 -   You can set the amount of reads as well as expiry time on the same note
 -   Note is not destroyed if the person enters a wrong password
 
+# Demo
+## [https://secret.roushik.com](https://secret.roushik.com)
+
+
 # Deploy Development
 Deploy the docker-compose.yml file
 
