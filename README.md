@@ -25,12 +25,15 @@ Run Migrations
 Access on [http://localhost:8000](http://localhost:8000) or [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 # Deploy Production
+
 Copy .env.dev to .env.prod file and change sensitive information
+
 Information to Change:
 
- - Change `DJANGO_DEBUG` to `0`
- - Change `DJANGO_SECRET_KEY` using [https://djecrety.ir/](https://djecrety.ir/)
- - Change `DB_PASSWORD` and `POSTGRES_PASSWORD` to something secure (both values should be the same)
+- Change `DJANGO_DEBUG` to `0`
+- Change `DJANGO_SECRET_KEY` using [https://djecrety.ir/](https://djecrety.ir/)
+- Change `DB_PASSWORD` and `POSTGRES_PASSWORD` to something secure (both values should be the same)
+- Change `CSRF_TRUSTED_ORIGINS` to your domain name
 
 Deploy the docker-compose.yml and docker-compose.prod.yml file
 
@@ -39,6 +42,7 @@ Deploy the docker-compose.yml and docker-compose.prod.yml file
 Run Migrations and Collect Static Files
 
     docker container exec -it secret_notes_web_1 bash
+
 Inside docker container, run
 
     python manage.py migrate
