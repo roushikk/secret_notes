@@ -5,7 +5,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     ports:
-      - 8000:8000
+      - "8000:8000"
     env_file:
       - .env.dev
     volumes:
@@ -13,12 +13,25 @@ services:
     depends_on:
       - db
 
+  celery:
+    build: .
+    command: celery -A secret_notes worker -B -l INFO
+    env_file:
+      - .env.dev
+    volumes:
+      - .:/app
+    depends_on:
+      - web
+
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - .env.dev
+
+  redis:
+    image: redis:6-alpine
 
 volumes:
   postgres_data:
