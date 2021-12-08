@@ -132,3 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Celery configuration
 CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
+
+# CSRF configuration
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS').split(',')
