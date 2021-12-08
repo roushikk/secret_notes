@@ -5,6 +5,7 @@ from .models import Note
 
 
 class NoteCreateForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(), required=False)
     password2 = forms.CharField(widget=forms.PasswordInput(), required=False)
     expires_at = forms.DateTimeField(input_formats=['%d-%m-%Y %H:%M:%S'], required=False)
 
@@ -13,14 +14,10 @@ class NoteCreateForm(forms.ModelForm):
         fields = [
             'title',
             'content',
-            'password',
             'allowed_reads',
             'display_confirmation',
             'expires_at'
         ]
-        widgets = {
-            'password': forms.PasswordInput(),
-        }
 
     def clean_allowed_reads(self):
         allowed_reads = self.cleaned_data['allowed_reads']
